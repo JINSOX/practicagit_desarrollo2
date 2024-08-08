@@ -1,0 +1,150 @@
+<div class="addContainer">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+        <img [src]='miembro.fotoUrl' alt="avatar">
+        <div class="modal-about">
+          {{dialogTitle}}
+        </div>
+      </div>
+    </div>
+    <button mat-icon-button (click)="dialogRef.close()" class="modal-close-button" aria-label="Close dialog">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content>
+    <form class="register-form m-4" [formGroup]="miembroForm">
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>DNI</mat-label>
+            <input matInput formControlName="dni" required>
+            <mat-icon class="material-icons-outlined color-icon p-3" matSuffix>badge</mat-icon>
+            <mat-error *ngIf="miembroForm.get('dni')?.hasError('required')">
+              DNI es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Nombres</mat-label>
+            <input matInput formControlName="nombres" required>
+            <mat-icon class="material-icons-outlined color-icon p-3" matSuffix>face</mat-icon>
+            <mat-error *ngIf="miembroForm.get('nombres')?.hasError('required')">
+              Nombres es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Apellidos</mat-label>
+            <input matInput formControlName="apellidos" required>
+            <mat-icon class="material-icons-outlined color-icon p-3" matSuffix>person</mat-icon>
+            <mat-error *ngIf="miembroForm.get('apellidos')?.hasError('required')">
+              Apellidos es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email" required>
+            <mat-icon class="material-icons-outlined color-icon p-3" matSuffix>email</mat-icon>
+            <mat-error *ngIf="miembroForm.get('email')?.hasError('required')">
+              Email es requerido
+            </mat-error>
+            <mat-error *ngIf="miembroForm.get('email')?.hasError('email')">
+              Email no es válido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Teléfono</mat-label>
+            <input matInput formControlName="telefono" type="tel" required>
+            <mat-icon class="material-icons-outlined color-icon p-3" matSuffix>phone</mat-icon>
+            <mat-error *ngIf="miembroForm.get('telefono')?.hasError('required')">
+              Teléfono es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Fecha de Nacimiento</mat-label>
+            <input matInput [matDatepicker]="pickerFechaNacimiento" formControlName="fechaNacimiento">
+            <mat-datepicker-toggle matSuffix [for]="pickerFechaNacimiento"></mat-datepicker-toggle>
+            <mat-datepicker #pickerFechaNacimiento></mat-datepicker>
+            <mat-error *ngIf="miembroForm.get('fechaNacimiento')?.hasError('required')">
+              Fecha de nacimiento es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Dirección</mat-label>
+            <textarea matInput formControlName="direccion" required></textarea>
+            <mat-error *ngIf="miembroForm.get('direccion')?.hasError('required')">
+              Dirección es requerida
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Universidad</mat-label>
+            <input matInput formControlName="universidad" required>
+            <mat-error *ngIf="miembroForm.get('universidad')?.hasError('required')">
+              Universidad es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Título</mat-label>
+            <input matInput formControlName="titulo" required>
+            <mat-error *ngIf="miembroForm.get('titulo')?.hasError('required')">
+              Título es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Fecha de Graduación</mat-label>
+            <input matInput [matDatepicker]="pickerFechaGraduacion" formControlName="fechaGraduacion">
+            <mat-datepicker-toggle matSuffix [for]="pickerFechaGraduacion"></mat-datepicker-toggle>
+            <mat-datepicker #pickerFechaGraduacion></mat-datepicker>
+            <mat-error *ngIf="miembroForm.get('fechaGraduacion')?.hasError('required')">
+              Fecha de graduación es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Estado</mat-label>
+            <input matInput formControlName="estado" required>
+            <mat-error *ngIf="miembroForm.get('estado')?.hasError('required')">
+              Estado es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" [disabled]="!miembroForm.valid" [mat-dialog-close]="1" (click)="onConfirm()">Guardar</button>
+            <button mat-raised-button color="warn" (click)="onNoClick()" tabindex="-1">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

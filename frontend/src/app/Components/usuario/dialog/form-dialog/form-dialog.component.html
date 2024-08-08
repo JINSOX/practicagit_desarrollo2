@@ -1,0 +1,98 @@
+<div class="addContainer">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+        <!-- Puedes mostrar una imagen del usuario si tienes una, o eliminar esta línea si no se necesita -->
+        <div class="modal-about">
+          {{dialogTitle}}
+        </div>
+      </div>
+    </div>
+    <button mat-icon-button (click)="dialogRef.close()" class="modal-close-button" aria-label="Close dialog">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content>
+    <form class="register-form m-4" [formGroup]="usuarioForm">
+      <div class="row">
+        <!-- Campo ID Usuario solo de lectura -->
+        
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>ID Miembro</mat-label>
+            <input matInput formControlName="idMiembro" required>
+            <mat-icon class="material-icons-outlined color-icon p-3" matSuffix>face</mat-icon>
+            <mat-error *ngIf="usuarioForm.get('idMiembro')?.hasError('required')">
+              ID Miembro es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username">
+            <mat-icon class="material-icons-outlined color-icon p-3" matSuffix>person</mat-icon>
+            <mat-error *ngIf="usuarioForm.get('username')?.hasError('required')">
+              Username es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="passwordHash" type="password">
+            <mat-icon class="material-icons-outlined color-icon p-3" matSuffix>lock</mat-icon>
+            <mat-error *ngIf="usuarioForm.get('passwordHash')?.hasError('required')">
+              Password es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Rol</mat-label>
+            <input matInput formControlName="rol">
+            <mat-error *ngIf="usuarioForm.get('rol')?.hasError('required')">
+              Rol es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Fecha de Creación</mat-label>
+            <input matInput [matDatepicker]="pickerFechaCreacion" formControlName="fechaCreacion">
+            <mat-datepicker-toggle matSuffix [for]="pickerFechaCreacion"></mat-datepicker-toggle>
+            <mat-datepicker #pickerFechaCreacion></mat-datepicker>
+            <mat-error *ngIf="usuarioForm.get('fechaCreacion')?.hasError('required')">
+              Fecha de creación es requerida
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Último Acceso</mat-label>
+            <input matInput [matDatepicker]="pickerUltimoAcceso" formControlName="ultimoAcceso">
+            <mat-datepicker-toggle matSuffix [for]="pickerUltimoAcceso"></mat-datepicker-toggle>
+            <mat-datepicker #pickerUltimoAcceso></mat-datepicker>
+            <mat-error *ngIf="usuarioForm.get('ultimoAcceso')?.hasError('required')">
+              Último acceso es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" [disabled]="!usuarioForm.valid" [mat-dialog-close]="1" (click)="onConfirm()">Guardar</button>
+            <button mat-raised-button color="warn" (click)="onNoClick()" tabindex="-1">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
